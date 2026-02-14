@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ความประทับใจในวันพิเศษ</title>
+    <!-- ใช้ Tailwind CSS สำหรับดีไซน์ที่ทันสมัย -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Sriracha&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sriracha', cursive;
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+            touch-action: manipulation;
+        }
+
+        /* เอฟเฟกต์กลีบดอกไม้ร่วงหล่น */
+        .petal {
+            position: fixed;
+            font-size: 1.2rem;
+            color: #f43f5e;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            animation: fall 8s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2rem;
+            box-shadow: 0 10px 40px -10px rgba(244, 31, 75, 0.15);
+            width: 100%;
+        }
+
+        .img-container {
+            width: 100%;
+            max-width: 260px;
+            height: 180px;
+            margin: 0 auto;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            background: #ffe4e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .img-container {
+                max-width: 300px;
+                height: 200px;
+            }
+        }
+
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .btn-sweet {
+            background: linear-gradient(to right, #fb7185, #f43f5e);
+            color: white;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-sweet:active {
+            transform: scale(0.95);
+        }
+
+        /* ปุ่มที่จะเลื่อนหนี */
+        #noBtn {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 50;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center px-4 py-8">
+
+    <header class="text-center mb-8 z-10">
+        <div class="inline-block p-1 px-4 rounded-full bg-rose-100 text-rose-500 text-xs mb-3 font-bold tracking-wider">
+            SPECIAL FOR YOU
+        </div>
+        <h1 class="text-3xl md:text-5xl text-rose-600 font-bold mb-2">สุขสันต์วันวาเลนไทน์นะ</h1>
+        <p class="text-base md:text-lg text-rose-400 px-4">มีบางอย่างที่อยากให้เธอเห็นครับ...</p>
+    </header>
+
+    <main class="w-full max-w-md z-10">
+        <!-- ขั้นตอนที่ 1: กล่องของขวัญ -->
+        <div id="step1" class="glass-card p-6 md:p-10 text-center transition-all duration-700">
+            <div class="img-container float-anim mb-6">
+                <!-- ใส่รูปกล่องของขวัญ -->
+                <img src="https://play-lh.googleusercontent.com/JFsWuM7yWlTxhoddyAA5eLAaS92hjJz5-hAa-82o8hMr2Kbeg8yDzIounvNSNCTYNg"
+                    alt="กล่องของขวัญ">
+            </div>
+            <h2 class="text-xl md:text-2xl text-rose-600 mb-6 font-bold">ลองเปิดดูหน่อยไหม?</h2>
+            <button onclick="revealFlowers()"
+                class="btn-sweet w-full md:w-auto px-10 py-4 rounded-full text-lg font-bold shadow-lg">
+                เปิดของขวัญ
+            </button>
+        </div>
+
+        <!-- ขั้นตอนที่ 2: ดอกไม้ -->
+        <div id="step2" class="hidden glass-card p-6 md:p-8 text-center transition-all duration-700">
+            <div class="img-container float-anim mb-6" style="height: 220px;">
+                <!-- ใส่รูปดอกกุหลาบแดงขาว -->
+                <img src="https://cdn.globalrose.com/assets/img/prod/red-and-white-rose-flowers-grower-direct-shipping-globalrose.png"
+                    alt="ดอกกุหลาบสีแดงและขาว">
+            </div>
+            <h2 class="text-2xl md:text-3xl text-rose-600 font-bold mb-4">ดอกไม้สำหรับเธอ</h2>
+            <div class="text-base md:text-lg text-gray-600 leading-relaxed mb-6 space-y-2 px-2">
+                <p>ตั้งใจเลือกมาให้เลยนะ</p>
+                <p>ไม่ได้มีอะไรจะขอนะ แค่อยากเห็นเธอยิ้มในวันนี้</p>
+                <p>หวังว่าความสดใสนี้จะทำให้เธอมีความสุขนะ</p>
+            </div>
+            <button onclick="showDessert()" class="text-rose-500 font-bold hover:underline text-sm md:text-base">
+                อ้อ... มีเรื่องจะถามอีกนิดนึง
+            </button>
+        </div>
+
+        <!-- ขั้นตอนที่ 3: ชวนไปทานขนม -->
+        <div id="step3" class="hidden glass-card p-6 md:p-10 text-center relative overflow-hidden min-h-[480px]">
+            <h2 class="text-2xl md:text-3xl text-rose-600 font-bold mb-4">ไปหาขนมอร่อยๆ <br>ทานด้วยกันไหม? 🍰</h2>
+            <div class="img-container mb-6" style="height: 130px; max-width: 180px;">
+                <!-- ใส่รูปขนมหวาน -->
+                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=500&q=80" alt="ขนมเค้ก">
+            </div>
+            <div id="buttonArea" class="flex flex-col gap-3 items-center w-full">
+                <button onclick="celebrateChoice('เย้! ดีใจจัง เดี๋ยวทักไปนัดเวลานะครับ 😊')"
+                    class="btn-sweet w-full py-4 rounded-2xl text-lg font-bold z-20 shadow-md">
+                    ไปสิ น่าสนใจนะ 😊
+                </button>
+                <button id="noBtn" onmouseover="startMoveTimer()" onmouseout="cancelMoveTimer()"
+                    ontouchstart="handleTouchStart(event)" onclick="celebrateChoice('ว้าว! กดทันด้วยเหรอเนี่ย? 😊')"
+                    class="bg-white border-2 border-rose-200 text-rose-400 w-full py-4 rounded-2xl text-lg font-bold">
+                    ขอคิดดูก่อนนะ
+                </button>
+            </div>
+        </div>
+
+        <!-- ข้อความสุดท้าย -->
+        <div id="finalMessage" class="hidden glass-card p-8 text-center animate-pulse">
+            <h2 id="finalText" class="text-2xl md:text-3xl text-rose-600 font-bold mb-4 leading-tight"></h2>
+            <div class="img-container my-6" style="height: 160px; width: 160px; border-radius: 50%;">
+                <img src="https://ih1.redbubble.net/image.5356383805.5149/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg"
+                    alt="รูปหัวใจ">
+            </div>
+            <p class="text-rose-400 font-bold">Happy Valentine's Day!</p>
+        </div>
+    </main>
+
+    <footer class="mt-12 text-rose-300 text-xs z-10 pb-8">
+        Made with 💖 for someone special
+    </footer>
+
+    <script>
+        let moveTimeout;
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            const types = ['🌸', '🌹', '🌷', '✨', '💖'];
+            petal.innerHTML = types[Math.floor(Math.random() * types.length)];
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.fontSize = (Math.random() * 8 + 12) + 'px';
+            petal.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            petal.style.opacity = Math.random();
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 8000);
+        }
+
+        setInterval(createPetal, 500);
+
+        function revealFlowers() {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+            for (let i = 0; i < 20; i++) setTimeout(createPetal, i * 150);
+        }
+
+        function showDessert() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.remove('hidden');
+        }
+
+        function handleTouchStart(e) {
+            moveTimeout = setTimeout(moveButton, 150);
+        }
+
+        function startMoveTimer() {
+            moveTimeout = setTimeout(moveButton, 500);
+        }
+
+        function cancelMoveTimer() {
+            clearTimeout(moveTimeout);
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = document.getElementById('step3');
+            const padding = 30;
+            const maxX = container.clientWidth - btn.offsetWidth - padding;
+            const maxY = container.clientHeight - btn.offsetHeight - padding;
+
+            const randomX = Math.max(padding, Math.random() * maxX);
+            const randomY = Math.max(150, Math.random() * maxY);
+
+            btn.style.position = 'absolute';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+            btn.style.width = 'auto';
+            btn.style.margin = '0';
+            btn.style.paddingLeft = '1.5rem';
+            btn.style.paddingRight = '1.5rem';
+        }
+
+        function celebrateChoice(message) {
+            clearTimeout(moveTimeout);
+            document.getElementById('step3').classList.add('hidden');
+            const finalSection = document.getElementById('finalMessage');
+            const finalText = document.getElementById('finalText');
+            finalText.innerText = message;
+            finalSection.classList.remove('hidden');
+            const interval = setInterval(createPetal, 150);
+            setTimeout(() => clearInterval(interval), 5000);
+        }
+    </script>
+</body>
+
+</html>
