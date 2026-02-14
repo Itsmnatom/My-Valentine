@@ -221,12 +221,17 @@
             document.getElementById('step3').classList.remove('hidden');
         }
 
+        // ปรับปรุงการทำงานบนมือถือให้หนีไวขึ้น
         function handleTouchStart(e) {
-            moveTimeout = setTimeout(moveButton, 10);
+            // ป้องกันการทำงานซ้ำซ้อน
+            e.preventDefault(); 
+            // ลดเวลาหน่วงให้เหลือ 0 หรือน้อยมากๆ เพื่อให้เขากดไม่ทัน
+            moveButton(); 
         }
 
         function startMoveTimer() {
-            moveTimeout = setTimeout(moveButton, 10);
+            // สำหรับเมาส์ยังคงให้เวลา 0.5 วินาที
+            moveTimeout = setTimeout(moveButton, 500);
         }
 
         function cancelMoveTimer() {
@@ -237,12 +242,15 @@
             const btn = document.getElementById('noBtn');
             const container = document.getElementById('step3');
             const padding = 30;
+            
+            // ขอบเขตการสุ่มภายใน Card
             const maxX = container.clientWidth - btn.offsetWidth - padding;
             const maxY = container.clientHeight - btn.offsetHeight - padding;
-
+            
+            // สุ่มตำแหน่งใหม่ (เน้นให้อยู่คนละจุดกับตำแหน่งปัจจุบัน)
             const randomX = Math.max(padding, Math.random() * maxX);
-            const randomY = Math.max(150, Math.random() * maxY);
-
+            const randomY = Math.max(160, Math.random() * maxY); // เริ่มจากใต้รูปภาพลงมา
+            
             btn.style.position = 'absolute';
             btn.style.left = randomX + 'px';
             btn.style.top = randomY + 'px';
@@ -267,4 +275,5 @@
 
 
 </html>
+
 
