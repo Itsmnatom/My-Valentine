@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ความประทับใจในวันพิเศษ</title>
-    <!-- ใช้ Tailwind CSS สำหรับดีไซน์ที่ทันสมัย -->
+    <!-- ใช้ Tailwind CSS สำหรับการจัดเลย์เอาต์ -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Sriracha&display=swap" rel="stylesheet">
     <style>
@@ -17,7 +16,7 @@
             touch-action: manipulation;
         }
 
-        /* เอฟเฟกต์กลีบดอกไม้ร่วงหล่น */
+        /* กลีบดอกไม้ลอยล่อง */
         .petal {
             position: fixed;
             font-size: 1.2rem;
@@ -29,15 +28,8 @@
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(-10vh) translateX(0) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(110vh) translateX(50px) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) translateX(50px) rotate(360deg); opacity: 0; }
         }
 
         .glass-card {
@@ -61,15 +53,12 @@
             align-items: center;
             justify-content: center;
             border: 4px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             position: relative;
         }
 
         @media (min-width: 768px) {
-            .img-container {
-                max-width: 300px;
-                height: 200px;
-            }
+            .img-container { max-width: 300px; height: 200px; }
         }
 
         .float-anim {
@@ -77,15 +66,8 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .btn-sweet {
@@ -94,14 +76,14 @@
             transition: all 0.3s ease;
             -webkit-tap-highlight-color: transparent;
         }
-
+        
         .btn-sweet:active {
             transform: scale(0.95);
         }
 
-        /* ปุ่มที่จะเลื่อนหนี */
+        /* ปรับความเร็วการเคลื่อนที่ให้นุ่มนวลแต่หนีทันที */
         #noBtn {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); 
             z-index: 50;
             -webkit-tap-highlight-color: transparent;
         }
@@ -113,7 +95,6 @@
         }
     </style>
 </head>
-
 <body class="flex flex-col items-center px-4 py-8">
 
     <header class="text-center mb-8 z-10">
@@ -128,13 +109,11 @@
         <!-- ขั้นตอนที่ 1: กล่องของขวัญ -->
         <div id="step1" class="glass-card p-6 md:p-10 text-center transition-all duration-700">
             <div class="img-container float-anim mb-6">
-                <!-- ใส่รูปกล่องของขวัญ -->
-                <img src="https://play-lh.googleusercontent.com/JFsWuM7yWlTxhoddyAA5eLAaS92hjJz5-hAa-82o8hMr2Kbeg8yDzIounvNSNCTYNg"
-                    alt="กล่องของขวัญ">
+                <!-- รูปกล่องของขวัญ -->
+                <img src="https://play-lh.googleusercontent.com/JFsWuM7yWlTxhoddyAA5eLAaS92hjJz5-hAa-82o8hMr2Kbeg8yDzIounvNSNCTYNg" alt="">
             </div>
             <h2 class="text-xl md:text-2xl text-rose-600 mb-6 font-bold">ลองเปิดดูหน่อยไหม?</h2>
-            <button onclick="revealFlowers()"
-                class="btn-sweet w-full md:w-auto px-10 py-4 rounded-full text-lg font-bold shadow-lg">
+            <button onclick="revealFlowers()" class="btn-sweet w-full md:w-auto px-10 py-4 rounded-full text-lg font-bold shadow-lg">
                 เปิดของขวัญ
             </button>
         </div>
@@ -142,9 +121,8 @@
         <!-- ขั้นตอนที่ 2: ดอกไม้ -->
         <div id="step2" class="hidden glass-card p-6 md:p-8 text-center transition-all duration-700">
             <div class="img-container float-anim mb-6" style="height: 220px;">
-                <!-- ใส่รูปดอกกุหลาบแดงขาว -->
-                <img src="https://cdn.globalrose.com/assets/img/prod/red-and-white-rose-flowers-grower-direct-shipping-globalrose.png"
-                    alt="ดอกกุหลาบสีแดงและขาว">
+                <!-- รูปดอกไม้จากลิงก์ที่ระบุ -->
+                <img src="https://cdn.globalrose.com/assets/img/prod/red-and-white-rose-flowers-grower-direct-shipping-globalrose.png" alt="">
             </div>
             <h2 class="text-2xl md:text-3xl text-rose-600 font-bold mb-4">ดอกไม้สำหรับเธอ</h2>
             <div class="text-base md:text-lg text-gray-600 leading-relaxed mb-6 space-y-2 px-2">
@@ -157,32 +135,32 @@
             </button>
         </div>
 
-        <!-- ขั้นตอนที่ 3: ชวนไปทานขนม -->
+        <!-- ขั้นตอนที่ 3: ชวนไปทานขนม (แบบหนีไวเป็นพิเศษบนมือถือ) -->
         <div id="step3" class="hidden glass-card p-6 md:p-10 text-center relative overflow-hidden min-h-[480px]">
             <h2 class="text-2xl md:text-3xl text-rose-600 font-bold mb-4">ไปหาขนมอร่อยๆ <br>ทานด้วยกันไหม? 🍰</h2>
             <div class="img-container mb-6" style="height: 130px; max-width: 180px;">
-                <!-- ใส่รูปขนมหวาน -->
-                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=500&q=80" alt="ขนมเค้ก">
+                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=500&q=80" alt="">
             </div>
             <div id="buttonArea" class="flex flex-col gap-3 items-center w-full">
-                <button onclick="celebrateChoice('เย้! ดีใจจัง เดี๋ยวทักไปนัดเวลานะครับ 😊')"
-                    class="btn-sweet w-full py-4 rounded-2xl text-lg font-bold z-20 shadow-md">
+                <button onclick="celebrateChoice('เย้! ดีใจจัง เดี๋ยวทักไปนัดเวลานะครับ 😊')" class="btn-sweet w-full py-4 rounded-2xl text-lg font-bold z-20 shadow-md">
                     ไปสิ น่าสนใจนะ 😊
                 </button>
-                <button id="noBtn" onmouseover="startMoveTimer()" onmouseout="cancelMoveTimer()"
-                    ontouchstart="handleTouchStart(event)" onclick="celebrateChoice('ว้าว! กดทันด้วยเหรอเนี่ย? 😊')"
+                <button id="noBtn" 
+                    onmouseover="startMoveTimer()" 
+                    onmouseout="cancelMoveTimer()"
+                    ontouchstart="handleTouchStart(event)"
+                    onclick="celebrateChoice('แหม... กดทันจนได้นะเนี่ย! 😊')" 
                     class="bg-white border-2 border-rose-200 text-rose-400 w-full py-4 rounded-2xl text-lg font-bold">
                     ขอคิดดูก่อนนะ
                 </button>
             </div>
         </div>
 
-        <!-- ข้อความสุดท้าย -->
+        <!-- ข้อความปิดท้าย -->
         <div id="finalMessage" class="hidden glass-card p-8 text-center animate-pulse">
             <h2 id="finalText" class="text-2xl md:text-3xl text-rose-600 font-bold mb-4 leading-tight"></h2>
             <div class="img-container my-6" style="height: 160px; width: 160px; border-radius: 50%;">
-                <img src="https://ih1.redbubble.net/image.5356383805.5149/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg"
-                    alt="รูปหัวใจ">
+                <img src="https://ih1.redbubble.net/image.5356383805.5149/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg" alt="">
             </div>
             <p class="text-rose-400 font-bold">Happy Valentine's Day!</p>
         </div>
@@ -213,7 +191,7 @@
         function revealFlowers() {
             document.getElementById('step1').classList.add('hidden');
             document.getElementById('step2').classList.remove('hidden');
-            for (let i = 0; i < 20; i++) setTimeout(createPetal, i * 150);
+            for(let i=0; i<20; i++) setTimeout(createPetal, i * 150);
         }
 
         function showDessert() {
@@ -272,8 +250,4 @@
         }
     </script>
 </body>
-
-
 </html>
-
-
